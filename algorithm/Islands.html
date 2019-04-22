@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>岛屿问题</title>
+</head>
+<body>
+    <pre>一个二维数组，1代表陆地、0代表海洋，例如：
+        [
+        [1,1,1,1,0,0,0],
+        [1,1,1,0,0,0,1],
+        [0,0,0,0,1,1,0],
+        [1,1,1,0,0,0,0]
+        ]
+        如果1 的上下左右都为0，则视为一个岛屿，写出一个函数，计算数组中岛屿的个数。
+    </pre>
+    <textarea name="" id="arr" cols="50" rows="30"  placeholder="请输入一个0和1组成的二维数组"></textarea>
+    <button id="btn">查询</button>
+    <p>岛屿数量为：<span id="number"></span></p>
+</body>
+<script>
+    /**
+     * 错误监控
+     * */
+    window.onerror = function (e) {
+        console.log(e)
+    }
+    /**
+     * arr为一个0和1组成的二维数组，1代表陆地，0代表海洋
+     * 
+     * */
+    let time = 0;
+    function landNUm(arr) {
+        let num = 0;time = 0;
+        for(let i=0;i<arr.length;i++){
+            let child = arr[i];
+            for(let j=0;j<child.length;j++){
+                if(child[j]){
+                    Domino('',i,j,child.length-1);
+                    deleteLand(arr);
+                    num++;
+                }
+            }
+        }
+        let dom = document.getElementById('number');
+        dom.innerText = num +'- 四方查询次数：' + time;
+//        console.log(num);
+        /**
+         *四方查找
+         */
+        function left(i,j) {
+            time++;
+            if(arr[i][j-1]==1){
+                arr[i][j-1] = 2;
+                if(j-1>0){
+                    return Domino('left',i,j-1);
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }
+        function right(i,j) {
+            time++;
+            if(arr[i][j+1]==1){
+                arr[i][j+1] = 2;
+                if(j+1<arr[i].length-1){
+                    return Domino('right',i,j+1);
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }
+        function up(i,j) {
+            time++;
+            if (arr[i - 1][j]==1) {
+                arr[i-1][j] = 2;
+                if (i - 1 > 0) {
+                    return Domino('up', i-1, j);
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        function down(i,j) {
+            time++;
+            if (arr[i + 1][j]==1) {
+                arr[i + 1][j] = 2;
+                /**
+                 * 这里的范围限制需要加上最后一行，具体原因有待分析
+                 * */
+                if (i + 1 < arr.length) {
+                    return Domino('down', i+1, j);
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        /**
+         * 方法寓意为像多米洛骨牌那样向四周摊开
+         * 向四周查找紧邻的陆地
+         * */
+        function Domino(direction,i,j) {
+            switch(direction){
+                case 'left':
+                    if(j > 0){left(i,j);}
+                    if(i > 0){up(i,j);}
+                    if(i < arr.length-1){down(i,j);}
+                    break;
+                case 'right':
+                    if(j < arr[i].length-1){right(i,j);}
+                    if(i > 0){up(i,j);}
+                    if(i < arr.length-1){down(i,j);}
+                    break;
+                case 'up':
+                    if(j > 0){left(i,j);}
+                    if(j < arr[i].length-1){right(i,j);}
+                    if(i > 0){up(i,j);}
+                    break;
+                case 'down':
+                    if(j > 0){left(i,j);}
+                    if(j < arr[i].length-1){right(i,j);}
+                    if(i < arr.length-1){down(i,j);}
+                    break;
+                default:
+                    if(j > 0){left(i,j);}
+                    if(j < arr[i].length-1){right(i,j);}
+                    if(i > 0){up(i,j);}
+                    if(i < arr.length-1){down(i,j);}
+                    break;
+            }
+        }
+        /**
+         * 删除已经计算过的陆地
+         * */
+        function deleteLand() {
+            let a= JSON.stringify(arr);
+            console.log(JSON.parse(a));
+            for(let i in arr){
+                for(let j in arr[i]){
+                    if(arr[i][j]===2){
+                        arr[i][j]=0;
+                    }
+                }
+            }
+            return arr;
+        }
+
+    }
+    let btn = document.getElementById('btn');
+    let text = document.getElementById('arr');
+    btn.addEventListener('click',function () {
+        landNUm(JSON.parse(text.value));
+    })
+    let arr = [
+        [1,1,1,1,0,1,0],
+        [1,1,1,0,0,0,1],
+        [0,0,1,0,1,1,0],
+        [1,1,1,0,0,0,0]
+    ];
+//    landNUm(arr);
+</script>
+</html>

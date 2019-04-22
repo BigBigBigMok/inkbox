@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>layout</title>
+    <style>
+        html *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <ruby>
+            人<rt>ren</rt>
+            <rp>该标签无法显示</rp>
+        </ruby>
+        <time datetime="2018-01-17">今天是我生日</time>
+        <details>
+            <summary>点击查看更多</summary>
+            <p>这是点击后的内容</p>
+        </details>
+        <p>我最喜欢<mark>数学</mark></p>
+        <progress value="30" max="100"></progress>
+        <input type="text" list="cars">
+        <datalist id="cars">
+            <option value="宝马"></option>
+            <option value="奔驰"></option>
+            <option value="奥迪"></option>
+        </datalist>
+        <!--<embed src="swf/flash5924.swf" tyep="application/x-shockwave-flash">-->
+    </section>
+
+    <style>
+        .layout{
+            margin-bottom: 10px;
+        }
+        .left{
+            background: red;
+            min-height: 100px;
+        }
+        .center{
+            background: yellow;
+            min-height: 100px;
+        }
+        .right{
+            background: blue;
+            min-height: 100px;
+        }
+    </style>
+    <section class="layout float">
+        <style>
+            .float .left{
+                width: 300px;
+                float: left;
+            }
+            .float .center{
+                /*overflow: hidden;*/
+            }
+            .float .right{
+                width: 300px;
+                float: right;
+            }
+        </style>
+        <article class="box">
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="center">
+                <h1>float</h1>
+                <p>中间区域</p>
+                <p>中间区域</p>
+                <p>中间区域</p>
+            </div>
+        </article>
+    </section>
+    <section class="layout position">
+        <style>
+            .position{
+                min-height: 100px;
+            }
+            .position_box>div{
+                position: absolute;
+            }
+            .position .left{
+                left: 0;
+                width: 300px;
+            }
+            .position .center{
+                left: 300px;
+                right: 300px;
+            }
+            .position .right{
+                right: 0;
+                width: 300px;
+            }
+        </style>
+        <article class="position_box">
+            <div class="left"></div>
+            <div class="center">
+                <p>中间区域</p>
+                <p>中间区域</p>
+                <p>中间区域</p>
+                <p>中间区域</p>
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+
+    <section class="layout flex">
+        <style>
+            .flex_box{
+                display: flex;
+            }
+            .flex .left{
+                width: 300px;
+            }
+            .flex .center{
+                flex: 1;
+            }
+            .flex .right{
+                width: 300px;
+            }
+        </style>
+        <article class="flex_box">
+            <div class="left"></div>
+            <div class="center">
+                <p>中间区域</p>
+                <p>中间区域</p>
+                <p>中间区域</p>
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+
+    <section class="layout table">
+        <style>
+            .table_box{
+                display: table;
+                height: 100px;
+                width: 100%;
+            }
+            .table_box>div{
+                display: table-cell;
+            }
+            .table .left{
+                width: 300px;
+            }
+            .table .center{
+
+            }
+            .table .right{
+                width: 300px;
+            }
+        </style>
+        <article class="table_box">
+            <div class="left"></div>
+            <div class="center">
+                <p>中间区域</p>
+                <p>中间区域</p>
+                <p>中间区域</p>
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+
+    <section class="layout grid">
+        <style>
+            .grid_box{
+                display: grid;
+                grid-template-rows: 100px;
+                grid-template-columns: 300px auto 300px;
+            }
+        </style>
+        <article class="grid_box">
+            <div class="left"></div>
+            <div class="center">
+                <p>中间区域</p>
+                <p>中间区域</p>
+                <p>中间区域</p>
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+</body>
+<script>
+    var bubbleSort = function (arr) {
+        console.time('原始冒泡排序耗时');
+        var len = arr.length;
+        for (var i = 0; i < len; i++) {
+            for (var j = 0; j < len - 1 - i; j++) {
+                // console.log(arr[j],arr[j+1] )
+                if (arr[j] > arr[j+1]) { //相邻元素两两对比
+                    var temp = arr[j+1]; //元素交换
+                    arr[j+1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        console.timeEnd('原始冒泡排序耗时');
+        return arr;
+    }
+    var bubbleSort2 = function (arr) {
+        console.time('改进后冒泡排序耗时');
+        var i = arr.length-1; //初始时,最后位置保持不变　　
+        while ( i> 0) {
+            var pos= 0; //每趟开始时,无记录交换
+            for (var j= 0; j< i; j++){
+                if (arr[j]> arr[j+1]) {
+                    pos= j; //记录交换的位置
+                    var tmp = arr[j]; arr[j]=arr[j+1];arr[j+1]=tmp;
+                }
+            }
+            i= pos; //为下一趟排序作准备
+        }
+        console.timeEnd('改进后冒泡排序耗时');
+        return arr;
+    }
+    var bubbleSort3 = function (arr3) {
+        var low = 0;
+        var high= arr.length-1; //设置变量的初始值
+        var tmp,j;
+        console.time('2.改进后冒泡排序耗时');
+        while (low < high) {
+            for (j= low; j< high; ++j) {         //正向冒泡,找到最大者
+                if (arr[j]> arr[j+1]) {
+                    tmp = arr[j]; arr[j]=arr[j+1];arr[j+1]=tmp;
+                }
+            }
+            --high;  //修改high值, 前移一位
+            for (j=high; j>low; --j) {          //反向冒泡,找到最小者
+                if (arr[j]<arr[j-1]) {
+                    tmp = arr[j]; arr[j]=arr[j-1];arr[j-1]=tmp;
+                }
+            }
+            ++low;  //修改low值,后移一位
+        }
+        console.timeEnd('2.改进后冒泡排序耗时');
+        return arr3;
+    }
+    function insertionSort(array) {
+        console.time('插入排序耗时：');
+        for (var i = 1; i < array.length; i++) {
+            var key = array[i];
+            var j = i - 1;
+            while ( array[j] > key) {
+                array[j + 1] = array[j];
+                j--;
+            }
+            array[j + 1] = key;
+        }
+        console.timeEnd('插入排序耗时：');
+        return array;
+    }
+    function query(array) {
+        console.time('query插入排序耗时：');
+        var ary = [];
+        for (var i = 0; i < array.length; i++) {
+            ary.splice(array[i],0,array[i]);
+        }
+        console.timeEnd('query插入排序耗时：');
+        return ary;
+    }
+    var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+    console.log(bubbleSort(arr));
+    console.log(bubbleSort2(arr));
+    console.log(bubbleSort3(arr));
+    console.log(insertionSort(arr));
+    console.log(query(arr));
+</script>
+</html>
