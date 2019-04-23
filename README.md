@@ -1,6 +1,6 @@
 Lnkbox
 ====
-algorithm 算法模块  
+algorithm 算法模块
 -------
 #Islands
 	计算岛屿问题
@@ -16,3 +16,8 @@ check 检测模块
 	校验身份证号码
 #clientDetection
 	对客户端进行检测
+
+animation 动画模块
+--------
+#dazzle
+	背景炫彩动画
