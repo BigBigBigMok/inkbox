@@ -5,10 +5,60 @@
     <meta name="keywords" content="HTML,JS,CSS,JQ,VUE">
     <meta name="author" content="Mok">
     <meta name="description" content="Mok个人站点,采用Bootstrap做适配">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="shortcut icon" href="images/favicon.ico"/>
     <title>Inkbox</title>
+    <script src="js/base.js"></script>
+    <link rel="stylesheet" href="style/index.css">
+
 </head>
 <body>
+    <nav class="nav">
+        <ul>
+            <li class="fs30">I</li>
+            <li>
+                <ul class="classify">
+                    <li>分类1</li>
+                    <li>分类2</li>
+                    <li>分类3</li>
+                </ul>
+                <div class="menu"></div>
+            </li>
+        </ul>
+        <div class="mobile-classify">
+            <ul>
+                <li>分类1</li>
+                <li>分类2</li>
+                <li>分类3</li>
+            </ul>
+        </div>
+    </nav>
+    <section class="topA">
+        <article class="rainbow">
+            Mok
+        </article>
+        <canvas></canvas>
+    </section>
 
+    <section class="main">
+
+        <article class="desc">
+            此网站主要用于搭建个人站点，用于作者对于自身技术的整合以及进一步深入
+        </article>
+        <section class="laboratory">
+            <h3>技术实验室</h3>
+            <article class="rooms">
+                <a class="room"><img src="images/app.ico" alt=""><p>单页面应用</p></a>
+                <a class="room"><img src="images/plug.ico" alt=""><p>插件</p></a>
+                <a class="room"><img src="images/blog.ico" alt=""><p>博客列表</p></a>
+                <a class="room"><img src="images/QM.ico" alt=""><p>后端功能（待开发）</p></a>
+            </article>
+        </section>
+    </section>
+
+
+    <footer class="footer">网站作者：Mok&nbsp;&nbsp;&nbsp;&nbsp;邮箱: <a href="mailto:15755028927@163.com">15755028927@163.com</a></footer>
 </body>
+<script src="js/canvas.js" defer></script>
+<script src="js/index.js" defer></script>
 </html>

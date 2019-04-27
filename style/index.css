@@ -1,0 +1,188 @@
+html *{
+	margin: 0;
+	padding:0;
+}
+html,body{
+	min-height: 100%;
+	/*取消移动端点击元素背景闪烁*/
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+html{position: relative;}
+a{
+	color: #000;
+	cursor: pointer;
+	text-decoration: none;
+}
+a:hover, a:visited, a:link, a:active{
+	color: #000;
+
+}
+ul{
+	list-style: none;
+}
+
+@media screen and (min-width: 1080px)  {
+	.main{
+		width: 9.8rem;
+		min-height: 7rem;
+		margin: 0 auto;
+	}
+	.nav{height: 0.6rem;}
+	.nav .menu{
+		display: none;
+	}
+}
+@media screen and (max-width: 1000px)  {
+	.nav{height: 0.96rem;}
+	.nav .classify{
+		display: none;
+	}
+	.menu{
+		display: block;
+	}
+}
+.fs30{
+	font-size: 0.3rem;
+}
+.nav{
+	box-sizing: border-box;
+	color: #fff;
+	background-color: #000;
+}
+.nav>ul{padding: 0.1rem 0.2rem;box-sizing: border-box}
+.nav ul{
+	display: flex;
+	height: 100%;
+	align-items: center;
+	justify-content: space-between;
+}
+.nav ul li{
+	height: 100%;
+	cursor: pointer;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+}
+.classify li{
+	margin-left: 0.3rem;
+	font-size: 0.2rem;
+}
+.menu{
+	position: relative;
+	width: 0.4rem;
+	height: 0.4rem;
+	background: url("../images/menu.png") no-repeat 0 0;
+	background-size: auto 100%;
+}
+.mobile-classify{
+	position: relative;
+	height: 0;
+	background: #000;
+	border-bottom: 1px solid #ccc;
+	z-index: 2;
+	/*padding: 0.2rem;*/
+	box-sizing: border-box;
+}
+.mobile-classify>ul{display: none;}
+@keyframes spread {
+	0%{
+		height: 0;
+	}
+	100%{
+		height: 3.6rem;
+	}
+}
+@keyframes retract {
+	
+}
+
+/*头部canvas部分*/
+.topA{
+	position: relative;
+	height: 3.6rem;
+}
+.rainbow {
+	width: 100%;
+	color: #fff;
+	font-size: 1rem;
+	font-family: sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 3.6rem;
+	position: absolute;
+	top: 0;
+	pointer-events: none;
+	opacity: 0.7;
+}
+.topA canvas {
+		width: 100%;
+		height: 100%;
+}
+/**
+*内容部分
+*对于此网站的介绍
+*/
+.main{
+	/*width: 9.8rem;*/
+	/*min-height: 7rem;*/
+	margin: 0 auto;
+}
+.desc{
+	height: 1rem;
+	font-size: 0.2rem;
+	/*text-indent: 2em;*/
+	text-align: center;
+	padding-top: 0.2rem;
+	box-sizing: border-box;
+}
+.desc:first-letter{
+	font-size: 2em;
+}
+
+.laboratory{
+
+}
+.rooms{
+	padding: 0 0.2rem;
+	display: flex;
+	flex-flow: column;
+}
+.room{
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 0.8rem;
+	margin: 0.1rem 0;
+	padding: 0.1rem;
+	box-sizing: border-box;
+	box-shadow: 0 0.04rem 0.08rem 0.02rem #dedede;
+}
+.room:hover{
+	box-shadow: 0 0.04rem 0.08rem 0.06rem #ddd;
+}
+.room img{
+	height: 100%;
+	margin-right: 0.2rem;
+}
+.room p{
+	display: inline-block;
+}
+
+
+
+
+
+/**
+*作者模块
+*对于介绍作者，及作者联系方式
+*/
+.footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	text-align: center;
+}
