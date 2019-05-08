@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!--dns预解析-->
+    <!--<meta http-equiv="x-dns-prefetch-control" content="on">-->
+    <!--<link rel="dns-prefetch" href="//www.inkbox.top">-->
+    <!--静态资源缓存设置-->
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <!-- HTTP 1.1 --><meta http-equiv="Pragma" content="no-cache" />
+    <!-- 兼容HTTP1.0 --><meta http-equiv="Expires" content="0" /> <!-- 资源到期时间设为0 -->
+
     <meta name="keywords" content="HTML,JS,CSS,JQ,VUE">
     <meta name="author" content="Mok">
     <meta name="description" content="Mok个人站点,采用Bootstrap做适配">
@@ -10,7 +18,8 @@
     <title>Inkbox</title>
     <script src="js/base.js"></script>
     <link rel="stylesheet" href="style/index.css">
-
+    <!--<link rel="prefetch" href="layout/threeColumn.html"> &lt;!&ndash;预获取设置&ndash;&gt;-->
+    <link rel="preload" href="layout/threeColumn.html" as="script"><!--预加载-->
 </head>
 <body>
     <nav class="nav">
@@ -49,6 +58,7 @@
             <h3>技术实验室</h3>
             <article class="rooms">
                 <a class="room"><img src="images/app.ico" alt=""><p>单页面应用</p></a>
+                <a class="room" href="layout/threeColumn.html"><img src="images/threeColumn.ico" alt=""><p>三栏布局</p></a>
                 <a class="room"><img src="images/plug.ico" alt=""><p>插件</p></a>
                 <a class="room"><img src="images/blog.ico" alt=""><p>博客列表</p></a>
                 <a class="room"><img src="images/QM.ico" alt=""><p>后端功能（待开发）</p></a>
@@ -57,8 +67,17 @@
     </section>
 
 
-    <footer class="footer">网站作者：Mok&nbsp;&nbsp;&nbsp;&nbsp;邮箱: <a href="mailto:15755028927@163.com">15755028927@163.com</a></footer>
+    <footer class="footer">
+        <div>网站作者：Mok&nbsp;&nbsp;&nbsp;&nbsp;邮箱: <a href="mailto:15755028927@163.com">15755028927@163.com</a></div>
+        <div><a href="http://www.miitbeian.gov.cn/">京ICP证19019172号</a></div>
+    </footer>
 </body>
 <script src="js/canvas.js" defer></script>
 <script src="js/index.js" defer></script>
+<script>
+//    navigator.serviceWorker.register('./js/serviceWorker.js').then(function (registration) {
+//        // 注册成功
+//   });
+    console.log(navigator)
+</script>
 </html>
