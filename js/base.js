@@ -8,6 +8,12 @@
     var docEl = doc.documentElement;
     var tid;
     var rootItem,rootStyle;
+    var options = {
+        error:{
+            isOpen:true,
+            url:''
+        },
+    };
 
     function refreshRem() {
         var width = docEl.getBoundingClientRect().width;
@@ -17,7 +23,6 @@
         if (width > maxWidth) {
             width = maxWidth;
         }
-        console.log(width)
         var rem = width * 100 / designWidth;
         rootStyle="html{font-size:"+rem+'px !important}';
         rootItem = document.getElementById('rootsize') || document.createElement("style");
@@ -45,4 +50,15 @@
             tid = setTimeout(refreshRem, 300);
         }
     }, false);
-})(640, 640);
+    /**
+     * 全局错误监控
+     * */
+    function errorWatch() {
+        window.addEventListener('error',function (e) {
+            console.log(e);
+            (new Image).src = options.error.url;
+        },true)
+    };
+    if(options.error.isOpen){errorWatch();}
+
+    })(640, 640);
