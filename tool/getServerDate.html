@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 获取网络时间
+    function getDate(callback) {
+        var xhr = new XMLHttpRequest();
+        if( !xhr ){
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.open("HEAD",location.href,true);
+        xhr.onreadystatechange=function(){
+            if( xhr.readyState == 4 && xhr.status == 200 ){
+                var date =  new Date(xhr.getResponseHeader("Date")).getTime()
+                if(callback && typeof callback === 'function'){
+                    callback(date)
+                    return
+                }
+            }
+        }
+        xhr.send(null);
+    }
+    getDate(function (date) {
+        document.write('毫秒数：',date)
+    })
+</script>
+</html>
