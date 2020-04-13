@@ -108,6 +108,16 @@
 //        xhr.send(data);
 //    }
 //}
-
+ 
+ var xhr = new new XMLHttpRequest()
+ xhr.open('get', 'http://www.inkbox.top:3000/123', false)
+ xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+        if(xhr.status==200 || xhr.status==304){
+            console.log(xhr.responseText);
+        }
+    }
+ }
+ xhr.send()
 </script>
 </html>
